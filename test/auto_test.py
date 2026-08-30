@@ -29,7 +29,7 @@ class TestAutomationExerscis:
         home_page.succsess_message()
 
     @allure.title('Search products and verify cart after logjn')
-    def test_search_products_and_verify_cart_after_login(self, home_page, products_page, cart_page, sign_up_page):
+    def test_search_products_and_verify_cart_after_login(self, home_page, products_page, cart_page, create_valid_account_for_test, sign_up_page):
         home_page.click_on_products_btn()
         products_page.check_title()
         products_page.search_product()
