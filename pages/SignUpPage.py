@@ -58,6 +58,7 @@ class SignUpPage:
           self.submit_btn.click()
 
      def fill_inputs(self):
+          expect(self.page).to_have_url('https://automationexercise.com/signup')
           self.page.wait_for_load_state("domcontentloaded")
           self.gender_btn.wait_for(state="visible", timeout=15000)
           self.gender_btn.click()
