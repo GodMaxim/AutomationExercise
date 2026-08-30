@@ -49,7 +49,6 @@ class TestAutomationExerscis:
 
     def test_verify_address_details_in_checkout_page(self, home_page, sign_up_page, cart_page, checkout_page):
         home_page.click_sign_up()
-        sign_up_page.fill_inputs_login()
         sign_up_page.create_test_account_for_test()
         home_page.add_products()
         home_page.click_on_cart_btn()
