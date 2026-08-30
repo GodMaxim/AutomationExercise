@@ -45,7 +45,8 @@ def page(request):
         context = browser.new_context(
             locale="en-US",
             extra_http_headers={"Accept-Language": "en-US,en;q=0.9"},
-            viewport={"width": 1366, "height": 768}
+            viewport={"width": 1366, "height": 768},
+            user_agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"
         )
         context.tracing.start(screenshots=True, snapshots=True, sources=True)
         page = context.new_page()
