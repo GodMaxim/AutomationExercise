@@ -28,15 +28,19 @@ def page(request):
     browser_type_name = request.config.getoption("--browser_name")
     is_headless = request.config.getoption("--headless")
     
+    browser_args = []
+    if browser_type_name == "chromium":
+        browser_args = [
+            "--disable-translate",
+            "--disable-features=Translate,TranslateUI",
+            "--lang=en-US"
+        ]
+
     with sync_playwright() as p:
         browser_type = getattr(p, browser_type_name)
         browser = browser_type.launch(
             headless=is_headless,
-            args=[
-                "--disable-translate",
-                "--disable-features=Translate,TranslateUI",
-                "--lang=en-US"
-            ]
+            args=browser_args
         )
         context = browser.new_context(
             locale="en-US",
