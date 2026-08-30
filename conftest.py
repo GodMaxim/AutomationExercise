@@ -42,15 +42,16 @@ def page(request):
             headless=is_headless,
             args=browser_args
         )
+        user_agents = {
+            "chromium": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "firefox": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:121.0) Gecko/20100101 Firefox/121.0",
+            "webkit": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.2 Safari/605.1.15"
+            }
         context = browser.new_context(
             locale="en-US",
             extra_http_headers={"Accept-Language": "en-US,en;q=0.9"},
             viewport={"width": 1366, "height": 768},
-            user_agents = {
-                "chromium": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
-                "firefox": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:121.0) Gecko/20100101 Firefox/121.0",
-                "webkit": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.2 Safari/605.1.15"
-                }
+            user_agent=user_agents.get(browser_type_name)
         )
         context.tracing.start(screenshots=True, snapshots=True, sources=True)
         page = context.new_page()
