@@ -92,8 +92,8 @@ class SignUpPage:
           self.mobile_number.fill('1234')
 
      def fill_valid_input(self):
-          self.gender_btn.click(force=True)
           self.gender_btn.wait_for(state="visible", timeout=15000)
+          self.gender_btn.click(force=True)
           self.name_input.fill('My')
           self.password_input.fill('CorrectPassword')
 

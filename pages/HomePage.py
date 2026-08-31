@@ -75,7 +75,7 @@ class HomePage:
         expect(self.succsess_subscribe).to_be_visible()
 
     def click_on_cart_btn(self):
-        self.cart_btn.click()
+        self.cart_btn.click(force=True)
 
     def click_on_view_product(self):
         self.view_product.click()
