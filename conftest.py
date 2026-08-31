@@ -51,7 +51,8 @@ def page(request):
             locale="en-US",
             extra_http_headers={"Accept-Language": "en-US,en;q=0.9"},
             viewport={"width": 1366, "height": 768},
-            user_agent=user_agents.get(browser_type_name)
+            user_agent=user_agents.get(browser_type_name),
+            accept_downloads=True
         )
         context.tracing.start(screenshots=True, snapshots=True, sources=True)
         page = context.new_page()

@@ -51,7 +51,7 @@ AutomationExercise/
  - source .venv/bin/activate  # On Windows use: .venv\Scripts\activate
 
  ## Install dependencies:
- -  python -m pip install --upgrade pip
+ - python -m pip install --upgrade pip
  - pip install -r requirements.txt
  - playwright install --with-deps
  - pip install pytest-rerunfailures
