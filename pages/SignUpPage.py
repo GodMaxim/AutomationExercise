@@ -62,8 +62,6 @@ class SignUpPage:
           self.submit_btn.click()  
 
      def fill_inputs(self):
-          self.page.wait_for_url("**/signup", timeout=20000)
-          self.page.wait_for_load_state("domcontentloaded")
           self.gender_btn.wait_for(state="visible", timeout=30000)
           self.gender_btn.click(force=True)
           self.name_input.fill('Somename')
