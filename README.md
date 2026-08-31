@@ -34,7 +34,7 @@ AutomationExercise/
 # Features
 
 - Page Object Model (POM): Clean separation of test logic and UI element locators.
-- Cross-Browser Testing: Run tests on Chromium, Firefox, or Webkit via CLI options.
+- Cross-Browser Testing: Run tests on Chromium and Firefox via CLI options.
 - Parallel Execution Matrix: GitHub Actions workflow configured to run test suites across multiple browsers in parallel.
 - Allure Reporting: Comprehensive test reporting with step descriptions, attachments, and screenshots.
 - CI/CD Integration: Automated deployment of Allure reports to GitHub Pages.
@@ -64,7 +64,7 @@ AutomationExercise/
  ## Run tests using default settings (Chromium browser):
  - pytest
  
- ## Run tests on a specific browser (e.g., Firefox or Webkit) in headless mode with Allure generation:
+ ## Run tests on a specific browser (e.g., Firefox) in headless mode with Allure generation:
  - pytest --browser_name=firefox --headless --alluredir=allure-results
 
  ## To view the generated Allure report locally:
@@ -74,7 +74,7 @@ AutomationExercise/
 The project includes a GitHub Actions workflow (playwright.yml) that triggers on pushes and pull requests to the main/master branches. It executes the following steps:
 
 1. Installs all required dependencies and Playwright browsers across matrix environments.
-2. Runs the test suite in parallel for Chromium, Firefox, and Webkit.
+2. Runs the test suite in parallel for Chromium and Firefox
 3. Merges all test results into a unified Allure report.
 3. Publishes the HTML report to GitHub Pages.
 4. Sends automated notifications regarding the test run status to Slack. 
