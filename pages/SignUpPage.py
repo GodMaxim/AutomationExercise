@@ -125,6 +125,7 @@ class SignUpPage:
           expect(self.logged_in_user).to_be_visible()     
 
      def click_on_delete_account(self):
+          self.delete_account_btn.wait_for(state="visible", timeout=15000)
           self.delete_account_btn.click()
 
      def check_deleted_account(self):
