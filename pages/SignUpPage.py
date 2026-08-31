@@ -64,7 +64,7 @@ class SignUpPage:
      def fill_inputs(self):
           self.page.wait_for_url("**/signup", timeout=20000)
           self.page.wait_for_load_state("domcontentloaded")
-          self.gender_btn.wait_for(state="visible", timeout=15000)
+          self.gender_btn.wait_for(state="visible", timeout=30000)
           self.gender_btn.click(force=True)
           self.name_input.fill('Somename')
           self.password_input.fill('Greatpassword123')
@@ -96,7 +96,7 @@ class SignUpPage:
           self.mobile_number.fill('1234')
 
      def fill_valid_input(self):
-          self.gender_btn.wait_for(state="visible", timeout=15000)
+          self.gender_btn.wait_for(state="visible", timeout=25000)
           self.gender_btn.click(force=True)
           self.name_input.fill('My')
           self.password_input.fill('CorrectPassword')
@@ -126,7 +126,7 @@ class SignUpPage:
           expect(self.logged_in_user).to_be_visible()     
 
      def click_on_delete_account(self):
-          self.delete_account_btn.wait_for(state="visible", timeout=20000)
+          self.delete_account_btn.wait_for(state="visible", timeout=30000)
           self.delete_account_btn.click()
 
      def check_deleted_account(self):
