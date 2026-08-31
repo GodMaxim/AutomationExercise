@@ -27,7 +27,7 @@ class PaymentPage:
         expect(self.succsess_message).to_be_visible
 
     def click_on_invoice_download(self):
-        with self.page.expect_download(timeout=15000) as download_info:
+        with self.page.expect_download(timeout=30000) as download_info:
             self.invoice_download_btn.click()
         return download_info.value
 

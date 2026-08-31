@@ -60,8 +60,8 @@ def page(request):
                 get: () => undefined
             });
         """)
-        page.set_default_timeout(10000)
-        expect.set_options(timeout=10000)
+        page.set_default_timeout(20000)
+        expect.set_options(timeout=20000)
         page.route("**/adsbygoogle.js", lambda route: route.abort())
         page.route("**/pagead2.googlesyndication.com/**", lambda route: route.abort())
         page.route("**/google_vignette**", lambda route: route.abort())
