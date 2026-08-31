@@ -1,4 +1,5 @@
 from playwright.sync_api import expect
+import time
 
 class SignUpPage:
      def __init__(self,page):
@@ -36,6 +37,7 @@ class SignUpPage:
           self.log_in_email_input = page.locator('input[data-qa="login-email"]')
           self.log_in_password_input = page.locator('input[data-qa="login-password"]')
           self.email_error = page.locator('p', has_text="Email Address already exist!")
+          unique_email = f"user_{int(time.time() * 1000)}@gmail.com"
 
      def check_title(self):
           expect(self.title).to_be_visible()
@@ -49,14 +51,15 @@ class SignUpPage:
      def fill_inputs_login(self):
           self.name_input_login.wait_for(state="visible", timeout=10000)
           self.name_input_login.fill('Somename')
-          self.email_input.fill('coolemail@gmail.com')
+          unique_email = f"user_{int(time.time())}@gmail.com"
+          self.email_input.fill(unique_email)
           self.submit_btn.click()
           self.title.wait_for(state="visible", timeout=15000)
      
      def fill_valid_user(self):
           self.name_input_login.fill('My')
           self.email_input.fill('correctone@gmail.com')
-          self.submit_btn.click()
+          self.submit_btn.click()  
 
      def fill_inputs(self):
           self.page.wait_for_load_state("domcontentloaded")
