@@ -113,6 +113,13 @@ def payment_page(page):
     return PaymentPage(page)
 
 @pytest.fixture
+def get_browser_user(request):
+    browser_name = request.config.getoption("--browser", default="chromium")
+    if isinstance(browser_name, list):
+        browser_name = browser_name[0]
+    return TestData.BROWSER_ACCOUNTS.get(browser_name, TestData.BROWSER_ACCOUNTS["chromium"])
+
+@pytest.fixture
 def create_valid_account_for_test(page, home_page, sign_up_page, request):
     browser_name = request.config.getoption("--browser", default="chromium")
     if isinstance(browser_name, list):
