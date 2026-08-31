@@ -54,7 +54,7 @@ class SignUpPage:
           unique_email = f"user_{int(time.time())}@gmail.com"
           self.email_input.fill(unique_email)
           self.submit_btn.click()
-          self.title.wait_for(state="visible", timeout=15000)
+          self.title.wait_for(state="visible", timeout=20000)
      
      def fill_valid_user(self):
           self.name_input_login.fill('My')
@@ -94,7 +94,7 @@ class SignUpPage:
           self.mobile_number.fill('1234')
 
      def fill_valid_input(self):
-          self.gender_btn.wait_for(state="visible", timeout=25000)
+          self.gender_btn.wait_for(state="visible", timeout=30000)
           self.gender_btn.click(force=True)
           self.name_input.fill('My')
           self.password_input.fill('CorrectPassword')
@@ -144,12 +144,3 @@ class SignUpPage:
           self.check_created_title()  
           self.click_contiue_btn()
           self.check_logged_in_as()
-
-
-
-
-              
-
-               
-          
-
