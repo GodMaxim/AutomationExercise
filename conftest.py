@@ -122,5 +122,3 @@ def create_valid_account_for_test(page, home_page, sign_up_page):
     sign_up_page.click_contiue_btn()
     home_page.click_on_logout()
     page.goto("https://automationexercise.com/")
-
-

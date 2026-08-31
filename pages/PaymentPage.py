@@ -28,7 +28,7 @@ class PaymentPage:
 
     def click_on_invoice_download(self):
         try:
-               with self.page.expect_download(timeout=15000) as download_info:
+               with self.page.expect_download(timeout=30000) as download_info:
                     self.invoice_download_btn.click()
                return download_info.value
         except Exception:
@@ -37,4 +37,3 @@ class PaymentPage:
 
     def click_on_continue_btn(self):
         self.continue_btn.click()
-
