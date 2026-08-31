@@ -5,11 +5,12 @@ class TestAutomationExerscis:
 
     @allure.title('Logout user')
     def test_logout_user(self, home_page, create_valid_account_for_test, sign_up_page):
+        user_data = create_valid_account_for_test
         home_page.click_sign_up()
         home_page.check_log_in_title()
         with allure.step('Log in with valid credentials'):
-         sign_up_page.log_in_email_input.fill(TestData.VALID_USER["email"])
-         sign_up_page.log_in_password_input.fill(TestData.VALID_USER["password"])
+         sign_up_page.log_in_email_input.fill(user_data["email"])
+         sign_up_page.log_in_password_input.fill(user_data["password"])
          sign_up_page.click_on_log_in_btn()
         home_page.check_logged_in_as()
         home_page.click_on_logout()
@@ -29,7 +30,8 @@ class TestAutomationExerscis:
         home_page.succsess_message()
 
     @allure.title('Search products and verify cart after logjn')
-    def test_search_products_and_verify_cart_after_login(self, home_page, products_page, cart_page, sign_up_page):
+    def test_search_products_and_verify_cart_after_login(self, home_page, create_valid_account_for_test, products_page, cart_page, sign_up_page):
+        user_data = create_valid_account_for_test
         home_page.click_on_products_btn()
         products_page.check_title()
         products_page.search_product()
@@ -40,8 +42,8 @@ class TestAutomationExerscis:
         products_page.click_on_view_cart()
         cart_page.click_on_sign_up_btn()
         with allure.step('Log in with valid credentials'):
-         sign_up_page.log_in_email_input.fill(TestData.VALID_USER["email"])
-         sign_up_page.log_in_password_input.fill(TestData.VALID_USER["password"])
+         sign_up_page.log_in_email_input.fill(user_data["email"])
+         sign_up_page.log_in_password_input.fill(user_data["password"])
          sign_up_page.click_on_log_in_btn()
         home_page.click_on_cart_btn()
         cart_page.see_carts()

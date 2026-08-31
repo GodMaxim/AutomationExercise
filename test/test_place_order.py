@@ -39,9 +39,10 @@ class Test_place_order_TestAutomationExerscis:
 
     @allure.title('Place order login before checkout')
     def test_place_order_login_before_checkout(self, home_page, payment_page, cart_page, checkout_page, sign_up_page, create_valid_account_for_test):
+        user_data = create_valid_account_for_test
         home_page.click_sign_up()
-        sign_up_page.log_in_email_input.fill(TestData.VALID_USER["email"])
-        sign_up_page.log_in_password_input.fill(TestData.VALID_USER["password"])
+        sign_up_page.log_in_email_input.fill(user_data["email"])
+        sign_up_page.log_in_password_input.fill(user_data["password"])
         sign_up_page.click_on_log_in_btn()
         home_page.add_products()
         home_page.click_on_cart_btn()

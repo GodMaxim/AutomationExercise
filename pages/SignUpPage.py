@@ -56,9 +56,9 @@ class SignUpPage:
           self.submit_btn.click()
           self.title.wait_for(state="visible", timeout=20000)
      
-     def fill_valid_user(self):
-          self.name_input_login.fill('My')
-          self.email_input.fill('correctone@gmail.com')
+     def fill_valid_user(self, name, email):
+          self.name_input_login.fill(name)
+          self.email_input.fill(email)
           self.submit_btn.click()  
 
      def fill_inputs(self):
@@ -93,11 +93,11 @@ class SignUpPage:
           self.zipcode_input.fill('12345')
           self.mobile_number.fill('1234')
 
-     def fill_valid_input(self):
+     def fill_valid_input(self, password):
           self.gender_btn.wait_for(state="visible", timeout=30000)
           self.gender_btn.click(force=True)
           self.name_input.fill('My')
-          self.password_input.fill('CorrectPassword')
+          self.password_input.fill(password)
 
      def address_valid_information(self, country):
           self.first_name_input.fill('My')   

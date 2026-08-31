@@ -5,15 +5,13 @@ class TestData:
         "password": "Greatpassword123"
     }
 
-    VALID_USER = {
-            "name": "My",
-            "email": "correctone@gmail.com",
-            "password": "CorrectPassword"
+    INVALID_USER = {
+        "name": "1",
+        "email": "1@gmail.com",
+        "password": "2"
         }
 
-    INVALID_USER = {
-            "name": "1",
-            "email": "1@gmail.com",
-            "password": "2"
-        }
-    
+    BROWSER_ACCOUNTS = {
+        "chromium": {"email": "user_chromium@test.com", "password": "password123"},
+        "firefox": {"email": "user_firefox@test.com", "password": "password123"}
+    }

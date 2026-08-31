@@ -1,5 +1,6 @@
 import pytest
 import allure
+from test_data import TestData
 from playwright.sync_api import sync_playwright, expect
 from pages.HomePage import HomePage
 from pages.SignUpPage import SignUpPage
@@ -112,12 +113,17 @@ def payment_page(page):
     return PaymentPage(page)
 
 @pytest.fixture
-def create_valid_account_for_test(page, home_page, sign_up_page):
+def create_valid_account_for_test(page, home_page, sign_up_page, request):
+    browser_name = request.config.getoption("--browser", default="chromium")
+    if isinstance(browser_name, list):
+        browser_name = browser_name[0]
+    current_user = TestData.BROWSER_ACCOUNTS.get(browser_name, TestData.BROWSER_ACCOUNTS["chromium"])
     home_page.click_sign_up()
-    sign_up_page.fill_valid_user()
-    sign_up_page.fill_valid_input()
+    sign_up_page.fill_valid_user(name="My", email=current_user["email"])
+    sign_up_page.fill_valid_input(password=current_user["password"])
     sign_up_page.address_valid_information("United States")
     sign_up_page.click_on_submit_create_account()
     sign_up_page.click_contiue_btn()
     home_page.click_on_logout()
     page.goto("https://automationexercise.com/")
+    yield current_user

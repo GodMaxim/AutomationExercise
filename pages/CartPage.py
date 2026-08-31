@@ -62,7 +62,7 @@ class CartPage:
                 self.page.goto("https://automationexercise.com/checkout")
         
     def click_on_checkout_login(self):
-        self.checkout_login_btn.wait_for(state="visible", timeout=15000)
+        self.checkout_login_btn.wait_for(state="visible", timeout=30000)
         self.checkout_login_btn.click()
         expect(self.page).to_have_url('https://automationexercise.com/login')
 
