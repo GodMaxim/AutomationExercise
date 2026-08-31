@@ -46,6 +46,7 @@ class HomePage:
 
     def click_on_delete_account(self):
         self.delete_account_btn.click()
+        self.page.wait_for_url("**/delete_account", timeout=20000)
 
     def check_deleted_account(self):
         expect(self.deleted_account_title).to_be_visible()
