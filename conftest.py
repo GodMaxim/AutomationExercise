@@ -55,6 +55,11 @@ def page(request):
         )
         context.tracing.start(screenshots=True, snapshots=True, sources=True)
         page = context.new_page()
+        page.add_init_script("""
+            Object.defineProperty(navigator, 'webdriver', {
+                get: () => undefined
+            });
+        """)
         page.set_default_timeout(10000)
         expect.set_options(timeout=10000)
         page.route("**/adsbygoogle.js", lambda route: route.abort())
@@ -73,7 +78,7 @@ def page(request):
 
         yield page
         context.tracing.stop(path="trace.zip")
-        allure.attach.file("trace.zip", name="trace", attachment_type=allure.attachment_type.ZIP if hasattr(allure.attachment_type, "ZIP") else allure.attachment_type.TEXT)
+        allure.attach.file("trace.zip", name="playwright_trace", attachment_type="application/zip")
         page.close()
         context.close()
         browser.close()

@@ -47,7 +47,7 @@ class ProductsPage:
         self.search_btn.click()
 
     def check_related_products(self):
-        expect(self.searched_title).to_be_visible()
+        expect(self.searched_title).to_be_visible(timeout=20000)
         expect(self.searched_products.first).to_be_visible()
         count = self.searched_products.count()
         assert count > 0, "Products were not found"

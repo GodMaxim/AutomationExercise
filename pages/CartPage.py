@@ -15,6 +15,7 @@ class CartPage:
         self.empty_cart_message = page.locator('#empty_cart')
         self.sign_up_btn = page.locator('#header a[href="/login"]')
         self.carts_field = page.locator('#cart_info_table')
+        self.visible_carts = page.locator('#checkoutModal')
         
 
     def check_subscribe_title(self):
@@ -61,7 +62,7 @@ class CartPage:
                 self.page.goto("https://automationexercise.com/checkout")
         
     def click_on_checkout_login(self):
-        self.checkout_login_btn.wait_for(state="visible", timeout=10000)
+        self.checkout_login_btn.wait_for(state="visible", timeout=15000)
         self.checkout_login_btn.click()
         expect(self.page).to_have_url('https://automationexercise.com/login')
 

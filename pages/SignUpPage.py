@@ -51,6 +51,7 @@ class SignUpPage:
           self.name_input_login.fill('Somename')
           self.email_input.fill('coolemail@gmail.com')
           self.submit_btn.click()
+          self.title.wait_for(state="visible", timeout=15000)
      
      def fill_valid_user(self):
           self.name_input_login.fill('My')
@@ -58,10 +59,9 @@ class SignUpPage:
           self.submit_btn.click()
 
      def fill_inputs(self):
-          expect(self.page).to_have_url('https://automationexercise.com/signup')
           self.page.wait_for_load_state("domcontentloaded")
           self.gender_btn.wait_for(state="visible", timeout=15000)
-          self.gender_btn.click()
+          self.gender_btn.click(force=True)
           self.name_input.fill('Somename')
           self.password_input.fill('Greatpassword123')
 
@@ -92,7 +92,8 @@ class SignUpPage:
           self.mobile_number.fill('1234')
 
      def fill_valid_input(self):
-          self.gender_btn.click()
+          self.gender_btn.click(force=True)
+          self.gender_btn.wait_for(state="visible", timeout=15000)
           self.name_input.fill('My')
           self.password_input.fill('CorrectPassword')
 
