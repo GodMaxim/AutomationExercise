@@ -34,9 +34,10 @@ class Test_cart_page_TestAutomationExercise:
         cart_page.delete_all_products()
         expect(cart_page.empty_cart_message).to_be_visible()
 
-    def test_add_to_cart_from_recommended_items(self, home_page, cart_page):
+    def test_add_to_cart_from_recommended_items(self, home_page, cart_page, page):
         home_page.see_recommendations()
         expect(home_page.recommendation_title).to_be_visible()
         home_page.click_on_rec_cart()
-        home_page.click_on_cart_btn()
+        home_page.click_on_rec_cart_btn()
+        expect(page).to_have_url('https://automationexercise.com/view_cart')
         expect(cart_page.carts_field).to_be_visible()

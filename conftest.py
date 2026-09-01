@@ -11,6 +11,18 @@ from pages.CartPage import CartPage
 from pages.CheckoutPage import CheckoutPage
 from pages.PaymentPage import PaymentPage
 
+@pytest.fixture(scope="session")
+def browser_type_launch_args(browser_type_launch_args):
+    return {
+        **browser_type_launch_args,
+        "args": [
+            "--disable-translate",
+            "--disable-features=Translate",
+            "--no-default-browser-check",
+            "--lang=en-US"
+        ]
+    }
+    
 @pytest.fixture(scope="function", autouse=True)
 def configure_playwright_environment(page, context, request):
     page.add_init_script("""

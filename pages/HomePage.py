@@ -18,6 +18,7 @@ class HomePage:
         self.subscription_btn = page.locator('#subscribe')
         self.succsess_subscribe = page.locator('#success-subscribe')
         self.cart_btn = page.locator('#header a[href="/view_cart"]')
+        self.rec_cart_btn = page.locator('#cartModal a[href="/view_cart"]')
         self.view_product = page.locator('a[href="/product_details/1"]')
         self.first_product = page.locator('.features_items .single-products').first
         self.second_product = page.locator('.features_items .single-products').nth(1)
@@ -60,7 +61,12 @@ class HomePage:
         self.subscription_btn.click()
 
     def click_on_cart_btn(self):
+        self.cart_btn.wait_for(state="visible")
         self.cart_btn.click(force=True)
+
+    def click_on_rec_cart_btn(self):
+        self.rec_cart_btn.wait_for(state="visible")
+        self.rec_cart_btn.click(force=True)
 
     def click_on_view_product(self):
         self.view_product.click()
