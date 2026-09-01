@@ -1,0 +1,13 @@
+# Playwright & Test Artifacts
+trace.zip
+traces/
+allure-results/
+allure-report/
+playwright-report/
+test-results/
+
+# Python & IDE
+.venv/
+__pycache__/
+.pytest_cache/
+.vscode/
