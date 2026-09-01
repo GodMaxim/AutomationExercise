@@ -35,21 +35,9 @@ class HomePage:
     def click_sign_up(self):
         self.sign_up_btn.click()
 
-    def check_new_user_title(self):
-        expect(self.new_user_signup_title).to_be_visible()
-
-    def check_log_in_title(self):
-        expect(self.log_in_account_title).to_be_visible() 
-
-    def check_logged_in_as(self):
-        expect(self.logged_in_user).to_be_visible()
-
     def click_on_delete_account(self):
         self.delete_account_btn.click()
         self.page.wait_for_url("**/delete_account", timeout=20000)
-
-    def check_deleted_account(self):
-        expect(self.deleted_account_title).to_be_visible()
 
     def click_on_logout(self):
         self.logout_btn.click()
@@ -66,14 +54,10 @@ class HomePage:
 
     def check_subscribe_title(self):
         self.subscription_title.scroll_into_view_if_needed()
-        expect(self.subscription_title).to_be_visible
 
     def subscribe_action(self):
         self.subscription_input.fill('coolemail@gmail.com') 
         self.subscription_btn.click()
-
-    def succsess_message(self):
-        expect(self.succsess_subscribe).to_be_visible()
 
     def click_on_cart_btn(self):
         self.cart_btn.click(force=True)
@@ -90,9 +74,6 @@ class HomePage:
         self.second_product_add_btn.click()
         self.continue_shopping_btn.click()
 
-    def visible_category(self):
-        expect(self.category_title).to_be_visible()
-
     def click_women_category(self):
         self.women_category.click()
 
@@ -101,7 +82,6 @@ class HomePage:
 
     def see_recommendations(self):
         self.recommendation_title.scroll_into_view_if_needed()
-        expect(self.recommendation_title).to_be_visible()
 
     def click_on_rec_cart(self):
         self.recommended_cart.click()
@@ -109,11 +89,9 @@ class HomePage:
     def scroll_up_by_button(self):
         self.page.evaluate("window.scrollTo(0, 1000)")
         self.scroll_up_button.click()
-        expect(self.header_text).to_be_visible()
 
     def scroll_up_withount_button(self):
         self.header_text.scroll_into_view_if_needed()
-        expect(self.header_text).to_be_visible()
         
 
 

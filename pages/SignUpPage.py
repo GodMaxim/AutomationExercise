@@ -39,12 +39,6 @@ class SignUpPage:
           self.email_error = page.locator('p', has_text="Email Address already exist!")
           unique_email = f"user_{int(time.time() * 1000)}@gmail.com"
 
-     def check_title(self):
-          expect(self.title).to_be_visible()
-
-     def check_error_message(self):
-          expect(self.error_message).to_be_visible()
-
      def click_on_log_in_btn(self):
           self.log_in_btn.click()  
 
@@ -67,7 +61,7 @@ class SignUpPage:
           self.name_input.fill('Somename')
           self.password_input.fill('Greatpassword123')
 
-     def fill_exesting_credentials(self):
+     def fill_existing_credentials(self):
           self.name_input_login.fill('Somename')
           self.email_input.fill('myemail@gmail.com')
           self.submit_btn.click()
@@ -113,16 +107,10 @@ class SignUpPage:
 
      def click_on_submit_create_account(self):
           self.create_account_submit.click()
-               
-     def check_created_title(self):
-          expect(self.created_title).to_be_visible()
 
-     def click_contiue_btn(self):
+     def click_continue_btn(self):
           self.continue_btn.click()
-
-     def check_logged_in_as(self):
-          expect(self.logged_in_user).to_be_visible()     
-
+  
      def click_on_delete_account(self):
           self.delete_account_btn.wait_for(state="visible", timeout=30000)
           self.delete_account_btn.click()
@@ -131,9 +119,6 @@ class SignUpPage:
           expect(self.deleted_account_title).to_be_visible()   
           self.continue_btn.click()    
 
-     def see_email_error(self):
-          expect(self.email_error).to_be_visible()
-
      def create_test_account_for_test(self):
           self.fill_inputs_login()
           self.fill_inputs()
@@ -141,6 +126,11 @@ class SignUpPage:
           self.click_on_checkboxes()
           self.address_information("United States")
           self.click_on_submit_create_account()
-          self.check_created_title()  
-          self.click_contiue_btn()
-          self.check_logged_in_as()
+          expect(self.created_title).to_be_visible() 
+          self.click_continue_btn()
+          expect(self.logged_in_user).to_be_visible() 
+
+     def login(self, email, password):
+          self.log_in_email_input.fill(email)
+          self.log_in_password_input.fill(password)
+          self.log_in_btn.click()

@@ -9,7 +9,7 @@ class PaymentPage:
         self.expiration = page.locator('input[data-qa="expiry-month"]')
         self.expiration_year = page.locator('input[data-qa="expiry-year"]')
         self.submit = page.locator('#submit')
-        self.succsess_message = page.locator('#succsess_message')
+        self.success_message = page.locator('#success_message')
         self.invoice_download_btn = page.locator('a[href*="/download_invoice/"]')
         self.continue_btn = page.locator('a[data-qa="continue-button"]')
 
@@ -22,9 +22,6 @@ class PaymentPage:
 
     def click_on_submit(self):
         self.submit.click()
-
-    def succsess(self):
-        expect(self.succsess_message).to_be_visible
 
     def click_on_invoice_download(self):
         try:

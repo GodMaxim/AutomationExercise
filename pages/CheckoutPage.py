@@ -10,9 +10,6 @@ class CheckoutPage:
         self.delete_account_btn = page.locator('a[href="/delete_account"]')
         self.deleted_account_title = page.locator('h2', has_text='Account Deleted')
 
-    def check_info(self):
-        expect(self.info).to_be_visible()
-
     def place_order_with_description(self):
         self.description_area.fill('Some description')
         self.place_order.click()  
@@ -22,6 +19,3 @@ class CheckoutPage:
 
     def click_on_delete_account(self):
             self.delete_account_btn.click()
-        
-    def check_deleted_account(self):
-        expect(self.deleted_account_title).to_be_visible()

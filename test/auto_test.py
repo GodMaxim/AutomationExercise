@@ -1,18 +1,15 @@
 import allure
-from test_data import TestData
 from playwright.sync_api import expect
-class TestAutomationExerscis:
+class TestAutomationExercise:
 
     @allure.title('Logout user')
     def test_logout_user(self, home_page, create_valid_account_for_test, sign_up_page):
         user_data = create_valid_account_for_test
         home_page.click_sign_up()
-        home_page.check_log_in_title()
+        expect(home_page.log_in_account_title).to_be_visible() 
         with allure.step('Log in with valid credentials'):
-         sign_up_page.log_in_email_input.fill(user_data["email"])
-         sign_up_page.log_in_password_input.fill(user_data["password"])
-         sign_up_page.click_on_log_in_btn()
-        home_page.check_logged_in_as()
+         sign_up_page.login(user_data["email"], user_data["password"])
+        expect(home_page.logged_in_user).to_be_visible()
         home_page.click_on_logout()
 
     def test_contact_us_form(self, home_page, contact_us_page):
@@ -26,14 +23,15 @@ class TestAutomationExerscis:
 
     def test_verify_subscription_in_home_page(self, home_page):
         home_page.check_subscribe_title()
+        expect(home_page.subscription_title).to_be_visible()
         home_page.subscribe_action()
-        home_page.succsess_message()
+        expect(home_page.succsess_subscribe).to_be_visible()
 
     @allure.title('Search products and verify cart after logjn')
     def test_search_products_and_verify_cart_after_login(self, home_page, products_page, cart_page, sign_up_page, get_browser_user):
         user_data = get_browser_user
         home_page.click_on_products_btn()
-        products_page.check_title()
+        expect(products_page.product_title).to_be_visible()
         products_page.search_product()
         products_page.check_related_products()
         products_page.hover_add_first_product()
@@ -42,11 +40,9 @@ class TestAutomationExerscis:
         products_page.click_on_view_cart()
         cart_page.click_on_sign_up_btn()
         with allure.step('Log in with valid credentials'):
-         sign_up_page.log_in_email_input.fill(user_data["email"])
-         sign_up_page.log_in_password_input.fill(user_data["password"])
-         sign_up_page.click_on_log_in_btn()
+            sign_up_page.login(user_data["email"], user_data["password"])
         home_page.click_on_cart_btn()
-        cart_page.see_carts()
+        expect(cart_page.carts_field).to_be_visible()
         home_page.click_on_delete_account()
 
     def test_verify_address_details_in_checkout_page(self, home_page, sign_up_page, cart_page, checkout_page):
@@ -57,7 +53,7 @@ class TestAutomationExerscis:
         cart_page.click_proceed_btn()
         checkout_page.check_address()
         checkout_page.click_on_delete_account()
-        checkout_page.check_deleted_account()
+        expect(checkout_page.deleted_account_title).to_be_visible()
 
     @allure.title('Download invoice after purchase order')
     def test_download_invoice_after_purchase_order(self, home_page, cart_page, sign_up_page, checkout_page, payment_page):
@@ -73,22 +69,25 @@ class TestAutomationExerscis:
         payment_page.fill_inputs()
         with allure.step('Check that invoice dowloaded after succsessful purchase'):
          payment_page.click_on_submit()
-         payment_page.succsess()
+         expect(payment_page.success_message).to_be_visible()
          download = payment_page.click_on_invoice_download()
          if download:
             assert download.suggested_filename == "invoice.txt"
         payment_page.click_on_continue_btn()
         home_page.click_on_delete_account()
-        home_page.check_deleted_account()
+        expect(home_page.deleted_account_title).to_be_visible()
 
     def test_verify_scroll_up_using_arrow_button_and_scroll_down_functionality(self, home_page):
         home_page.check_subscribe_title()
+        expect(home_page.subscription_title).to_be_visible()
         home_page.scroll_up_by_button()
         expect(home_page.header_text).to_be_visible()
 
     def test_verify_scroll_up_without_arrow_button_and_scroll_down_functionality(self, home_page):
         home_page.check_subscribe_title()
+        expect(home_page.subscription_title).to_be_visible()
         home_page.scroll_up_withount_button()
+        expect(home_page.header_text).to_be_visible()
 
     
 

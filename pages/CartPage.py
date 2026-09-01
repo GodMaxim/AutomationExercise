@@ -20,18 +20,10 @@ class CartPage:
 
     def check_subscribe_title(self):
         self.subscription_title.scroll_into_view_if_needed()
-        expect(self.subscription_title).to_be_visible
     
     def subscribe_action(self):
         self.subscription_input.fill('coolemail@gmail.com') 
         self.subscription_btn.click()
-    
-    def succsess_message(self):
-        expect(self.succsess_subscribe).to_be_visible()
-
-    def verify_products_in_cart(self):
-        expect(self.product_1).to_be_visible()
-        expect(self.product_2).to_be_visible()
 
     def verify_product_1_details(self, price, quantity, total):
         expect(self.product_1.locator('.cart_price')).to_have_text(price)
@@ -72,14 +64,8 @@ class CartPage:
             first_delete_btn.evaluate("node => node.click()")
             self.page.wait_for_timeout(500)
 
-    def verify_cart_is_empty(self):
-        expect(self.empty_cart_message).to_be_visible()
-
     def click_on_sign_up_btn(self):
         self.sign_up_btn.click()
-
-    def see_carts(self):
-        expect(self.carts_field).to_be_visible
 
 
     

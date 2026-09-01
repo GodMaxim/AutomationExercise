@@ -10,7 +10,7 @@ class ContactUsPage:
         self.message_field = page.locator('#message')
         self.upload_file = page.locator('input[type="file"]')
         self.submit_btn = page.locator('input[data-qa="submit-button"]')
-        self.succsess_message = page.locator('.status.alert.alert-success')
+        self.success_message = page.locator('.status.alert.alert-success')
         self.back_home_btn = page.locator('.btn.btn-success')
 
     def fill_inputs(self):
@@ -25,6 +25,6 @@ class ContactUsPage:
         self.page.wait_for_timeout(3000)
 
     def check_message_and_return(self):
-        expect(self.succsess_message).to_be_visible(timeout=10000)
+        expect(self.success_message).to_be_visible(timeout=10000)
         self.back_home_btn.click()
         expect(self.page).to_have_url('https://automationexercise.com/')

@@ -39,9 +39,6 @@ class ProductsPage:
         self.brand = page.get_by_text("Brand:")
         self.products = page.locator(".features_items .col-sm-4")
 
-    def check_title(self):
-        expect(self.title).to_be_visible()
-
     def search_product(self):
         self.search_input.fill('Top')
         self.search_btn.click()
@@ -83,29 +80,19 @@ class ProductsPage:
 
     def see_brends(self):
         self.brends_title.scroll_into_view_if_needed()
-        expect(self.brends_title).to_be_visible()
 
     def click_on_polo_btn(self):
         self.polo_btn.click()
 
-    def verify_polo_page(self):
-        expect(self.polo_title).to_be_visible()
-        expect(self.page).to_have_url('https://automationexercise.com/brand_products/Polo')
-
     def click_on_biba_btn(self):
         self.biba_btn.click()
 
-    def veryfy_biba_page(self):
-        expect(self.page).to_have_url('https://automationexercise.com/brand_products/Biba')
-        expect(self.biba_products.first).to_be_visible()
+    def verify_biba_page(self):
         assert self.biba_products.count() > 0
 
     def click_on_view_product(self):
         self.view_product.click()
         expect(self.page).to_have_url('https://automationexercise.com/product_details/1')
-
-    def see_review_title(self):
-        expect(self.reviews_title).to_be_visible()
 
     def write_a_review(self):
         self.name_input.fill('Me')
@@ -116,16 +103,7 @@ class ProductsPage:
     def see_thanks_message(self, expected_message):
         expect(self.thanks_message).to_have_text(expected_message)
 
-    def all_details_are_visible(self):
-        expect(self.product_name).to_be_visible()
-        expect(self.category).to_be_visible()
-        expect(self.price).to_be_visible()
-        expect(self.availability).to_be_visible()
-        expect(self.condition).to_be_visible()
-        expect(self.brand).to_be_visible()
-
     def products_are_visible(self):
-        expect(self.products.first).to_be_visible()
         assert self.products.count() > 0
 
 
