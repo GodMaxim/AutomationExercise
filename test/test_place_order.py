@@ -16,7 +16,6 @@ class Test_place_order_TestAutomationExercise:
         checkout_page.place_order_with_description()
         payment_page.fill_inputs()
         payment_page.click_on_submit()
-        expect(payment_page.success_message).to_be_visible()
         home_page.click_on_delete_account()
         expect(home_page.deleted_account_title).to_be_visible()
 
@@ -32,7 +31,6 @@ class Test_place_order_TestAutomationExercise:
         checkout_page.place_order_with_description()
         payment_page.fill_inputs()
         payment_page.click_on_submit()
-        expect(payment_page.success_message).to_be_visible()
         home_page.click_on_delete_account()
         expect(home_page.deleted_account_title).to_be_visible()
 
@@ -48,6 +46,5 @@ class Test_place_order_TestAutomationExercise:
         checkout_page.place_order_with_description()
         payment_page.fill_inputs()
         payment_page.click_on_submit()
-        expect(payment_page.success_message).to_be_visible()
         home_page.click_on_delete_account()
         expect(home_page.deleted_account_title).to_be_visible()

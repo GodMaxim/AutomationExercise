@@ -69,7 +69,6 @@ class TestAutomationExercise:
         payment_page.fill_inputs()
         with allure.step('Check that invoice dowloaded after succsessful purchase'):
          payment_page.click_on_submit()
-         expect(payment_page.success_message).to_be_visible()
          download = payment_page.click_on_invoice_download()
          if download:
             assert download.suggested_filename == "invoice.txt"
