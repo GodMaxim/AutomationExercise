@@ -1,5 +1,5 @@
 import allure
-from playwright.async_api import expect
+from playwright.sync_api import expect
 class TestAutomationExercise:
 
     @allure.title('Logout user')

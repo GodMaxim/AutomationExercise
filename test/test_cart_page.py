@@ -1,5 +1,5 @@
 import allure
-from playwright.async_api import expect
+from playwright.sync_api import expect
 class Test_cart_page_TestAutomationExercise:
 
     def test_verify_subscription_in_cart_page(self, home_page, cart_page):

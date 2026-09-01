@@ -1,4 +1,4 @@
-from playwright.async_api import expect
+from playwright.sync_api import expect
 import allure
 class Test_place_order_TestAutomationExercise:
 
