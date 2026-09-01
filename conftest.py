@@ -22,7 +22,7 @@ def browser_type_launch_args(browser_type_launch_args):
             "--lang=en-US"
         ]
     }
-    
+
 @pytest.fixture(scope="function", autouse=True)
 def configure_playwright_environment(page, context, request):
     page.add_init_script("""
@@ -40,10 +40,11 @@ def configure_playwright_environment(page, context, request):
     page.route("**/translate.googleapis.com/**", lambda route: route.abort())
     page.route("**/translate.google.com/**", lambda route: route.abort())
     page.route("**/*translate_a*", lambda route: route.abort())
+    page.route("**/*doubleclick.net*/**", lambda route: route.abort())
 
     context.tracing.start(screenshots=True, snapshots=True, sources=True)
     
-    page.goto("https://automationexercise.com/", wait_until="domcontentloaded", timeout=30000)
+    page.goto("https://automationexercise.com/", wait_until="commit", timeout=30000)
     
     page.evaluate("""
         () => {
