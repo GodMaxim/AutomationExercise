@@ -6,7 +6,7 @@ class CartPage:
         self.subscription_title = page.locator('h2', has_text="Subscription")
         self.subscription_input = page.locator('#susbscribe_email')
         self.subscription_btn = page.locator('#subscribe')
-        self.succsess_subscribe = page.locator('#success-subscribe')
+        self.success_subscribe = page.locator('#success-subscribe')
         self.product_1 = page.locator('#product-1')
         self.product_2 = page.locator('#product-2')
         self.proceed = page.locator('a.btn.btn-default.check_out')
@@ -17,7 +17,6 @@ class CartPage:
         self.carts_field = page.locator('#cart_info_table')
         self.visible_carts = page.locator('#checkoutModal')
         
-
     def check_subscribe_title(self):
         self.subscription_title.scroll_into_view_if_needed()
     
