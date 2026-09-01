@@ -32,12 +32,13 @@ jobs:
         run: |
           python -m pip install --upgrade pip
           pip install -r requirements.txt
-          playwright install --with-deps
-          pip install pytest-rerunfailures
+
+      - name: Install Playwright browser
+        run: playwright install --with-deps ${{ matrix.browser }}
 
       - name: Run Pytest with Allure
         run: |
-          pytest --browser_name=${{ matrix.browser }} --headless --alluredir=allure-results --reruns 3 --reruns-delay 10
+          pytest --browser=${{ matrix.browser }} --alluredir=allure-results --reruns 3 --reruns-delay 10
         continue-on-error: true
 
       - name: Upload Allure Results Artifact

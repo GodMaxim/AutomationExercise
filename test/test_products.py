@@ -1,5 +1,5 @@
 from playwright.async_api import expect
-class Test_products_TestAutomationExerscis:
+class Test_products_TestAutomationExercise:
 
     def test_verify_all_products_and_product_detail_page(self, home_page, products_page):
         home_page.click_on_products_btn()

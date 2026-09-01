@@ -1,7 +1,7 @@
 from playwright.sync_api import expect
 from test_data import TestData
 import allure
-class Test_auth_TestAutomationExerscis:
+class Test_auth_TestAutomationExercise:
 
     def test_regiester_user(self, home_page, sign_up_page):
        home_page.click_sign_up()

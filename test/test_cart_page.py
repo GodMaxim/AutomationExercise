@@ -1,13 +1,13 @@
 import allure
 from playwright.async_api import expect
-class Test_cart_page_TestAutomationExerscis:
+class Test_cart_page_TestAutomationExercise:
 
     def test_verify_subscription_in_cart_page(self, home_page, cart_page):
         home_page.click_on_cart_btn()
         cart_page.check_subscribe_title()
         expect(cart_page.subscription_title).to_be_visible()
         cart_page.subscribe_action()
-        expect(cart_page.succsess_subscribe).to_be_visible()
+        expect(cart_page.success_subscribe).to_be_visible()
 
     @allure.title('Add products in cart')
     def test_add_products_in_cart(self, home_page, cart_page, products_page):

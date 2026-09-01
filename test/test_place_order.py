@@ -1,7 +1,6 @@
 from playwright.async_api import expect
 import allure
-
-class Test_place_order_TestAutomationExerscis:
+class Test_place_order_TestAutomationExercise:
 
     @allure.title('Add products in cart')
     def test_place_order_register_while_checkout(self, home_page, cart_page, sign_up_page, checkout_page, payment_page):
