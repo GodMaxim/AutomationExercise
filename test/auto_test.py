@@ -31,7 +31,7 @@ class TestAutomationExercise:
     def test_search_products_and_verify_cart_after_login(self, home_page, products_page, cart_page, sign_up_page, get_browser_user):
         user_data = get_browser_user
         home_page.click_on_products_btn()
-        expect(products_page.product_title).to_be_visible()
+        expect(products_page.title).to_be_visible()
         products_page.search_product()
         products_page.check_related_products()
         products_page.hover_add_first_product()

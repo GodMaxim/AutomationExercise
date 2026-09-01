@@ -3,7 +3,7 @@ class Test_products_TestAutomationExercise:
 
     def test_verify_all_products_and_product_detail_page(self, home_page, products_page):
         home_page.click_on_products_btn()
-        expect(products_page.product_title).to_be_visible()
+        expect(products_page.title).to_be_visible()
         expect(products_page.products.first).to_be_visible()
         products_page.products_are_visible()
         products_page.click_on_view_product()
@@ -16,7 +16,7 @@ class Test_products_TestAutomationExercise:
 
     def test_search_product(self, home_page, products_page):
         home_page.click_on_products_btn()
-        expect(products_page.product_title).to_be_visible()
+        expect(products_page.title).to_be_visible()
         products_page.search_product()
         products_page.check_related_products()
 
@@ -41,7 +41,7 @@ class Test_products_TestAutomationExercise:
 
     def test_add_review_on_product(self, home_page, products_page):
         home_page.click_on_products_btn()
-        expect(products_page.product_title).to_be_visible()
+        expect(products_page.title).to_be_visible()
         products_page.click_on_view_product()
         expect(products_page.reviews_title).to_be_visible()
         products_page.write_a_review()
