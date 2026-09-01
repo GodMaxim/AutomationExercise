@@ -1,4 +1,4 @@
-from playwright.sync_api import expect
+from playwright.async_api import expect
 
 class PaymentPage:
     def __init__(self,page):

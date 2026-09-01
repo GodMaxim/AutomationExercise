@@ -2,7 +2,7 @@ import pytest
 import allure
 import os
 from test_data import TestData
-from playwright.sync_api import sync_playwright, expect
+from playwright.sync_api import async_playwright, expect
 from pages.HomePage import HomePage
 from pages.SignUpPage import SignUpPage
 from pages.ContactUsPage import ContactUsPage
