@@ -53,19 +53,24 @@ AutomationExercise/
  ## Install dependencies:
  - python -m pip install --upgrade pip
  - pip install -r requirements.txt
- - playwright install --with-deps
  - pip install pytest-rerunfailures
 
  ## Install Playwright browsers:
- - playwright install
+ - playwright install --with-deps
 
 # Running Tests Locally
 
  ## Run tests using default settings (Chromium browser):
  - pytest
  
- ## Run tests on a specific browser (e.g., Firefox) in headless mode with Allure generation:
- - pytest --browser_name=firefox --headless --alluredir=allure-results
+ ## Run tests in Chromium (default, headless):
+ - pytest --browser chromium
+
+ ## Run tests in Firefox with Allure report generation:
+ - pytest --browser firefox --alluredir=allure-results
+
+ ## Run tests in headed (graphic) mode:
+ - pytest --browser chromium --headed
 
  ## To view the generated Allure report locally:
  - allure serve allure-results
