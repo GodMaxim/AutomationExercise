@@ -44,7 +44,7 @@ def configure_playwright_environment(page, context, request):
 
     context.tracing.start(screenshots=True, snapshots=True, sources=True)
     
-    page.goto("https://automationexercise.com/", wait_until="commit", timeout=30000)
+    page.goto("https://automationexercise.com/", wait_until="domcontentloaded", timeout=30000)
     
     page.evaluate("""
         () => {
